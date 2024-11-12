@@ -26,7 +26,7 @@ import { reactive } from 'vue';
 const authStore = useAuthStore();
 
 const credentials = reactive({
-  email: 'juanito@gmail.com',
+  email: '',
   password: ''
 });
 
