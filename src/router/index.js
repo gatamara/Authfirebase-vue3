@@ -26,17 +26,20 @@ const router = createRouter({
   ],
 });
 
-// Agrega una guardia de navegación
-router.beforeEach((to, from, next) => {
-  const store = useAuthStore()
 
-  // Verifica si la ruta requiere autenticación
+router.beforeEach((to, from, next) => {
+  const store = useAuthStore();
+
   if (to.meta.requiresAuth && !store.isAuthenticated) {
-    next('/login'); // Redirige a login si el usuario no está autenticado
+    next('/login');
+  }
+  else if ((to.path === '/login' || to.path === '/register') && store.isAuthenticated) {
+    next('/');
   } else {
-    next(); // Continua a la ruta deseada si está autenticado o no requiere autenticación
+    next();
   }
 });
+
 
 export default router;
 
