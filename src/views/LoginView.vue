@@ -38,7 +38,6 @@ const onSubmit = async () => {
     return;
   }
 
-
   try {
     await authStore.login(credentials);
     router.push('/')
